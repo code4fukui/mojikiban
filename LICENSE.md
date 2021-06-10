@@ -39,7 +39,7 @@
 1. 派生プログラムが前条4項及び7項に基づき再配布される場合には、以下の全ての条件を満たさなければなりません。
     1. 派生プログラムを再配布する際には、下記もまた、当該派生プログラムと一緒に再配布され、オンラインで提供され、または、郵送費・媒体及び取扱手数料の合計を超えない実費と引き換えに媒体を郵送する方法により提供されなければなりません。
         - (a)派生プログラムの写し; および
-        - 　(b)派生プログラムを作成する過程でフォント開発プログラムによって作成された追加のファイルであって派生プログラムをさらに加工するにあたって利用できるファイルが存在すれば、当該ファイル
+        - (b)派生プログラムを作成する過程でフォント開発プログラムによって作成された追加のファイルであって派生プログラムをさらに加工するにあたって利用できるファイルが存在すれば、当該ファイル
     2. 派生プログラムの受領者が、派生プログラムを、このライセンスの下で最初にリリースされた許諾プログラム（以下、「オリジナル・プログラム」といいます。）に置き換えることができる方法を再配布するものとします。かかる方法は、オリジナル・ファイルからの差分ファイルの提供、または、派生プログラムをオリジナル・プログラムに置き換える方法を示す指示の提供などが考えられます。
     3. 派生プログラムを、本契約書に定められた条件の下でライセンスしなければなりません。
     4. 派生プログラムのプログラム名、フォント名またはファイル名として、許諾プログラムが用いているのと同一の名称、またはこれを含む名称を使用してはなりません。
@@ -96,17 +96,17 @@ The Licensor grants to the Recipient a license to use the Licensed Program in an
 The license granted in the preceding Article shall be subject to the following restrictions:
 
 1. If a Derived Program is Redistributed pursuant to Paragraph 4 and 7 of the preceding Article, the following conditions must be met :
-  1. The following must be also Redistributed together with the Derived Program, or be made available online or by means of mailing mechanisms in exchange for a cost which does not exceed the total costs of postage, storage medium and handling fees:
-    -　　(a)a copy of the Derived Program; and
-    - 　　(b)any additional file created by the font developing program in the course of creating the Derived Program that can be used for further modification of the Derived Program, if any. 
-  2. It is required to also Redistribute means to enable recipients of the Derived Program to replace the Derived Program with the Licensed Program first released under this License (the “Original Program”).  Such means may be to provide a difference file from the Original Program, or instructions setting out a method to replace the Derived Program with the Original Program. 
-  3. The Recipient must license the Derived Program under the terms and conditions of this Agreement.
-  4. No one may use or include the name of the Licensed Program as a program name, font name or file name of the Derived Program. 
-  5. Any material to be made available online or by means of mailing a medium to satisfy the requirements of this paragraph may be provided, verbatim, by any party wishing to do so.
+    1. The following must be also Redistributed together with the Derived Program, or be made available online or by means of mailing mechanisms in exchange for a cost which does not exceed the total costs of postage, storage medium and handling fees:
+        -　　(a)a copy of the Derived Program; and
+        - 　　(b)any additional file created by the font developing program in the course of creating the Derived Program that can be used for further modification of the Derived Program, if any. 
+    2. It is required to also Redistribute means to enable recipients of the Derived Program to replace the Derived Program with the Licensed Program first released under this License (the “Original Program”).  Such means may be to provide a difference file from the Original Program, or instructions setting out a method to replace the Derived Program with the Original Program. 
+    3. The Recipient must license the Derived Program under the terms and conditions of this Agreement.
+    4. No one may use or include the name of the Licensed Program as a program name, font name or file name of the Derived Program. 
+    5. Any material to be made available online or by means of mailing a medium to satisfy the requirements of this paragraph may be provided, verbatim, by any party wishing to do so.
 2. If the Recipient Redistributes the Licensed Program pursuant to Paragraph 6 of the preceding Article, the Recipient shall meet all of the following conditions:
-  1. The Recipient may not change the name of the Licensed Program.
-  2. The Recipient may not alter or otherwise modify the Licensed Program.
-  3. The Recipient must attach a copy of this Agreement to the Licensed Program.
+    1. The Recipient may not change the name of the Licensed Program.
+    2. The Recipient may not alter or otherwise modify the Licensed Program.
+    3. The Recipient must attach a copy of this Agreement to the Licensed Program.
 3. THIS LICENSED PROGRAM IS PROVIDED BY THE LICENSOR “AS IS” AND ANY EXPRESSED OR IMPLIED WARRANTY AS TO THE LICENSED PROGRAM OR ANY DERIVED PROGRAM, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE, ARE DISCLAIMED.  IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXTENDED, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO; PROCUREMENT OF SUBSTITUTED GOODS OR SERVICE; DAMAGES ARISING FROM SYSTEM FAILURE; LOSS OR CORRUPTION OF EXISTING DATA OR PROGRAM; LOST PROFITS), HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE INSTALLATION, USE, THE REPRODUCTION OR OTHER EXPLOITATION OF THE LICENSED PROGRAM OR ANY DERIVED PROGRAM OR THE EXERCISE OF ANY RIGHTS GRANTED HEREUNDER, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 4. The Licensor is under no obligation to respond to any technical questions or inquiries, or provide any other user support in connection with the installation, use or the Reproduction and Other Exploitation of the Licensed Program or Derived Programs thereof.
 
