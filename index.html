@@ -12,17 +12,25 @@ onload = async () => {
   inpkana.placeholder = "漢字または読み";
   const divres = add("div");
 
+  let slast = "";
   inpkana.onkeyup = inpkana.onchange = () => {
     const s = inpkana.value;
-    if (s.length == 0) {
+    if (s.length == 0 || slast == s) {
       return;
     }
+    slast = s;
     const hits = MojiKiban.search(s);
     console.log(hits);
     divres.innerHTML = "";
-    for (const d of hits) {
+    divres.style.textAlign = "left";
+    divres.style.display = "inline-block";
+    divres.style.margin = "1em 1em 1em 10vw";
+    const max = 20;
+    for (let i = 0; i < Math.min(max, hits.length); i++) {
+      const d = hits[i];
       const div = create("div");
-      div.innerHTML = `<img src=${MojiKiban.getImageLink(d)}> : ${d.yomi}`;
+      div.innerHTML = `<a href=${MojiKiban.getLink(d)} target=_blank><img src=${MojiKiban.getImageLink(d)} style="height: 2em; margin-bottom: -.5em; margin-right: 1em"></a> ${d.c} : ${d.yomi}`;
+      div.style.padding = ".2em 0";
       divres.appendChild(div);
     }
   }
