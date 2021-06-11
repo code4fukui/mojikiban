@@ -5,17 +5,17 @@ let data;
 
 const init = async () => {
   data = CSV.toJSON(await CSV.fetch("./data/moji.csv"));
-  data.forEach(d => {
-    if (d.ucs) {
-      d.c = Moji.ucs2s(d.ucs)
-    } else {
-      //console.log(d);
-      d.c = "";
-    }
-  });
 };
 const search = (s) => {
-  return data.filter(d => d.c.indexOf(s) >= 0 || d.yomi.indexOf(s) >= 0);
+  if (!s) {
+    return [];
+  } else if (parseInt(s) == s) {
+    return data.filter(d => d.mj == s);
+  } else if (s.startsWith("MJ") && s.length == 8) {
+    const mj = parseInt(s.substring(2), 10);
+    return data.filter(d => d.mj == mj);
+  }
+  return data.filter(d => d.kanji.indexOf(s) >= 0 || d.yomi.indexOf(s) >= 0 || d.shrink.indexOf(s) >= 0);
 };
 const getImageLink = (d) => {
   const path = Moji.mj2mjcode(Math.floor(d.mj / 1000) * 1000);

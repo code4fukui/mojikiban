@@ -1,4 +1,3 @@
-
 <meta charset="utf-8"><script type="module">
 import { css, add, h1, style, link, create } from "https://js.sabae.cc/stdom.js";
 import { MojiKiban } from "./MojiKiban.js";
@@ -19,25 +18,33 @@ onload = async () => {
       return;
     }
     slast = s;
+    location.hash = s;
+
     const hits = MojiKiban.search(s);
     console.log(hits);
     divres.innerHTML = "";
     divres.style.textAlign = "left";
     divres.style.display = "inline-block";
     divres.style.margin = "1em 1em 1em 10vw";
-    const max = 20;
+    const max = 100;
     for (let i = 0; i < Math.min(max, hits.length); i++) {
       const d = hits[i];
       const div = create("div");
-      div.innerHTML = `<a href=${MojiKiban.getLink(d)} target=_blank><img src=${MojiKiban.getImageLink(d)} style="height: 2em; margin-bottom: -.5em; margin-right: 1em"></a> ${d.c} : ${d.yomi}`;
+      div.innerHTML = `<a href=${MojiKiban.getLink(d)} target=_blank><img src=${MojiKiban.getImageLink(d)} style="height: 2em; margin-bottom: -.5em; margin-right: 1em"></a> ${d.kanji} : ${d.lines}画 : ${d.yomi} : ${d.shrink}`;
       div.style.padding = ".2em 0";
       divres.appendChild(div);
     }
   }
   add("br");
+  link("文字情報＆フォント - 文字情報基盤", "https://moji.or.jp/mojikiban/");
   link("MojiKiban by Code for Fukui", "https://github.com/code4fukui/mojikiban")
   link("一日一創", "https://fukuno.jig.jp/3242")
 
   await MojiKiban.init();
+  const key = location.hash.substring(1);
+  if (key) {
+    inpkana.value = decodeURIComponent(key);
+    inpkana.onchange();
+  }
 };
 </script>
