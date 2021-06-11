@@ -1,5 +1,5 @@
 import * as t from "https://deno.land/std/testing/asserts.ts";
-import { MojiKiban } from "./MojiKiban.js";
+import { MojiKiban } from "../MojiKiban.js";
 
 Deno.test("test", async () => {
   await MojiKiban.init();

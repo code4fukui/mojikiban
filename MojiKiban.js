@@ -4,7 +4,7 @@ import { Moji } from "./Moji.js";
 let data;
 
 const init = async () => {
-  data = CSV.toJSON(await CSV.fetch("moji.csv"));
+  data = CSV.toJSON(await CSV.fetch("./data/moji.csv"));
   data.forEach(d => {
     if (d.ucs) {
       d.c = Moji.ucs2s(d.ucs)

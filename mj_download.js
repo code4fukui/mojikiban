@@ -5,7 +5,7 @@ import { sleep } from "https://js.sabae.cc/sleep.js";
 const base = "https://moji.or.jp/mojikibansearch/img/MJ/";
 const ext = ".png";
 
-const data = CSV.toJSON(await CSV.fetch("moji.csv"));
+const data = CSV.toJSON(await CSV.fetch("./data/moji.csv"));
 for (const d of data) {
   console.log(d.mj);
   const link = Moji.mj2imglink(d.mj, base, ext);

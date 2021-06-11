@@ -1,5 +1,5 @@
 import * as t from "https://deno.land/std/testing/asserts.ts";
-import { Moji } from "./Moji.js";
+import { Moji } from "../Moji.js";
 
 Deno.test("test", () => {
   t.assertEquals(Moji.ucs2s("37DF_E0101"), "㟟󠄁");
