@@ -4,7 +4,7 @@ const mj2mjcode = (mj) => {
   return typeof mj == "string" && mj.startsWith("MJ") ? mj : "MJ" + fix0(mj, 6);
 };
 
-const mj2imglink = (mj, base = "https://code4fukui.github.io/moji/mj/", ext = ".png") => {
+const mj2imglink = (mj, base = "https://moji.or.jp/mojikibansearch/img/MJ/", ext = ".png") => {
   return base + mj2mjcode(mj) + ext;
 };
 
