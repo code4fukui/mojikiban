@@ -1,5 +1,6 @@
 import { CSV } from "https://js.sabae.cc/CSV.js";
 import { Moji } from "./Moji.js";
+import gsplit from 'https://taisukef.github.io/GraphemeSplitter/GraphemeSplitterJS/StringSplitter.Grapheme.mjs'
 
 let data;
 
@@ -26,11 +27,55 @@ const getLink = (d) => {
 };
 const getData = () => data;
 
+const shrink = (s) => {
+  const res = [];
+  const map = {};
+  const kanji = {};
+  data.forEach(d => {
+    if (d.shrink) {
+      map[d.kanji] = gsplit.split(d.shrink);
+    }
+    kanji[d.kanji] = 1;
+  });
+  const ss = gsplit.split(s);
+  for (const c of ss) {
+    if (!kanji[c]) {
+      if (c.length != 1) {
+        throw new Error(s + ": " + c + " is simple kani");
+      }
+      res.push(c);
+    } else {
+      const sh = map[c];
+      if (sh) {
+        let n = null;
+        for (let i = 0; i < sh.length; i++) {
+          if (sh[i].length == 1) {
+            n = sh[i];
+            break;
+          }
+        }
+        if (n) {
+          res.push(n);
+        } else {
+          res.push("＿");
+        }
+      } else {
+        if (c.length == 1) {
+          throw new Error(c + " is simple kanji");
+        }
+        res.push("＿");
+      }
+    }
+  }
+  return res.join("");
+};
+
 const MojiKiban = {
   init,
   search,
   getImageLink,
   getLink,
   getData,
+  shrink,
 };
 export { MojiKiban };

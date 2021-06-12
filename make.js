@@ -1,10 +1,90 @@
 import { CSV } from "https://js.sabae.cc/CSV.js";
 import { Moji } from "./Moji.js";
 import { loadShrinkMap } from "./make_shrink.js";
+import { loadShrinkMapUnique } from "./make_shrinkunique.js";
 import { ArrayUtil } from "https://js.sabae.cc/ArrayUtil.js";
+import gsplit from 'https://taisukef.github.io/GraphemeSplitter/GraphemeSplitterJS/StringSplitter.Grapheme.mjs'
 
 const smap = await loadShrinkMap();
-console.log(smap);
+console.log(Object.values(smap)); // 31278
+const smapu = await loadShrinkMapUnique();
+console.log(Object.values(smapu).length); // 27584
+
+//Deno.exit(0);
+for (let i = 0; i < smap.length; i++) {
+  //console.log(smap[i], smapu[i]);
+  if (!smap[i] && !smapu[i]) {
+    continue;
+  } else if (!smap[i] && smapu[i]) {
+    console.log("x", smap[i], smapu[i]);
+    throw new Error("x")
+  } else if (smap[i] && !smapu[i]) {
+    //console.log("?", smap[i], smapu[i]);
+  } else if (smap[i][0] != smapu[i]) {
+    const s = smap[i];
+    const m = gsplit.split(s);
+    if (m.length != s.length) {
+      //console.log("long char included", m, s, s.length);
+      //throw new Error("long char included")
+    }
+    const n = m.indexOf(smapu[i]);
+    if (n > 0) {
+      //console.log("************", n)
+    }
+    //console.log("idx", n);
+    const ns = [smapu[i]];
+    for (let i = 0; i < m.length; i++) {
+      if (i != n) {
+        ns.push(m[i]);
+      }
+    }
+    smap[i] = ns.join("");
+    if (smap[i].indexOf("福") >= 0) {
+      console.log(smap[i], smapu[i]);
+    }
+  } else {
+    //console.log(smap[i], smapu[i]);
+  }
+}
+Deno.exit(0);
+/*
+console.log("chk")
+for (let i = 0; i < smap.length; i++) {
+  //console.log(smap[i], smapu[i]);
+  if (!smap[i] && !smapu[i]) {
+    continue;
+  } else if (!smap[i] && smapu[i]) {
+    console.log("x", smap[i], smapu[i]);
+    throw new Error("x")
+  } else if (smap[i] && !smapu[i]) {
+    //console.log("?", smap[i], smapu[i]);
+  } else if (smap[i][0] != smapu[i]) {
+    const s = smap[i];
+    const m = gsplit.split(s);
+    if (m.length != s.length) {
+      console.log("long char included", m, s, s.length);
+      //throw new Error("long char included")
+    }
+    const n = m.indexOf(smapu[i]);
+    if (n > 0) {
+      console.log("************", n)
+    }
+    smapun[i] = n;
+    console.log("idx", n);
+    const ns = [smapu[i]];
+    for (let i = 0; i < m.length; i++) {
+      if (i != n) {
+        ns.push(m[i]);
+      }
+    }
+    smap[i] = ns.join("");
+  } else {
+    smapun[i] = 0;
+    //console.log(smap[i], smapu[i]);
+  }
+}
+*/
+
 
 const data = CSV.toJSON(await CSV.fetch("./data/mji.csv"));
 let ndup = 0;

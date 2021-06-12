@@ -1,0 +1,38 @@
+<meta charset="utf-8"><script type="module">
+import { css, add, h1, style, link, create } from "https://js.sabae.cc/stdom.js";
+import { MojiKiban } from "./MojiKiban.js";
+
+onload = async () => {
+  css();
+  style({ body: { "text-align": "center" }, input: { width: "80%", "font-size": "150%", margin: "1em", padding: ".3em" }});
+
+  h1("文字情報基盤 MJ縮退デモ");
+  const inpkana = add("input");
+  inpkana.placeholder = "難解漢字を含む文字列";
+  const inpres = add("input");
+  inpres.placeholder = "縮退文字列";
+
+  let slast = "";
+  inpkana.onkeyup = inpkana.onchange = () => {
+    const s = inpkana.value;
+    if (s.length == 0 || slast == s) {
+      return;
+    }
+    slast = s;
+    location.hash = s;
+
+    inpres.value = MojiKiban.shrink(s);
+  }
+  add("br");
+  link("文字情報＆フォント - 文字情報基盤", "https://moji.or.jp/mojikiban/");
+  link("MojiKiban by Code for Fukui", "https://github.com/code4fukui/mojikiban")
+  link("一日一創", "https://fukuno.jig.jp/3242")
+
+  await MojiKiban.init();
+  const key = location.hash.substring(1);
+  if (key) {
+    inpkana.value = decodeURIComponent(key);
+    inpkana.onchange();
+  }
+};
+</script>
