@@ -2,17 +2,31 @@ import gsplit from 'https://taisukef.github.io/GraphemeSplitter/GraphemeSplitter
 
 class Str {
   constructor(s) {
-    const ss = gsplit.split(s);
-    this.length = ss.length;
-    for (let i = 0; i < this.length; i++) {
-      this[i] = ss[i];
+    if (s instanceof Str) {
+      this.length = s.length;
+      for (let i = 0; i < this.length; i++) {
+        this[i] = s[i];
+      }
+    } else {
+      const ss = gsplit.split(s);
+      this.length = ss.length;
+      for (let i = 0; i < this.length; i++) {
+        this[i] = ss[i];
+      }
     }
     Object.freeze(this);
   }
   charAt(n) {
     return this[n];
   }
+  toStr(s) {
+    if (s instanceof Str) {
+      return s;
+    }
+    return new Str(s);
+  }
   startsWith(str) {
+    str = this.toStr(str);
     for (let i = 0; i < str.length; i++) {
       if (this[i] != str[i]) {
         return false;
@@ -21,6 +35,7 @@ class Str {
     return true;
   }
   endsWith(str) {
+    str = this.toStr(str);
     for (let i = 0; i < str.length; i++) {
       if (this[this.length - 1 - i] != str[str.length - 1 - i]) {
         return false;
@@ -29,6 +44,7 @@ class Str {
     return true;
   }
   equals(str) {
+    str = this.toStr(str);
     if (str.length != this.length) {
       return false;
     }
@@ -47,6 +63,7 @@ class Str {
     return s.join("");
   }
   indexOf(s, begin = 0) {
+    s = this.toStr(s);
     A: for (let i = begin; i <= this.length - s.length; i++) {
       for (let j = 0; j < s.length; j++) {
         if (this[i + j] != s[j]) {
@@ -58,6 +75,7 @@ class Str {
     return -1;
   }
   lastIndexOf(s, begin = 0) {
+    s = this.toStr(s);
     A: for (let i = this.length - s.length; i >= begin; i--) {
       for (let j = 0; j < s.length; j++) {
         if (this[i + j] != s[j]) {

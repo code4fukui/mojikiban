@@ -24,6 +24,11 @@ Deno.test("equals", () => {
   t.assertEquals(s.equals(new Str("𤔜䙐福")), true);
   t.assertEquals(s.equals(new Str("𤔜䙐福x")), false);
 });
+Deno.test("equals2", () => {
+  const s = new Str("𤔜䙐福");
+  t.assertEquals(s.equals("𤔜䙐福"), true);
+  t.assertEquals(s.equals("𤔜䙐福x"), false);
+});
 Deno.test("toString", () => {
   const s = new Str("𤔜䙐福");
   t.assertEquals(s.toString(), "𤔜䙐福");
@@ -53,4 +58,8 @@ Deno.test("iterator", () => {
     }
     n++;
   }
+});
+Deno.test("indexOf String", () => {
+  t.assertEquals("æ̀".length, 2);
+  t.assertEquals(new Str("ææ̀ç").indexOf("æ̀"), 1);
 });
