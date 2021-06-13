@@ -40,3 +40,17 @@ Deno.test("lastIndexOf", () => {
   t.assertEquals(s.lastIndexOf(new Str("䙐福")), 1);
   t.assertEquals(s.lastIndexOf(new Str("䙐福"), 2), -1);
 });
+Deno.test("iterator", () => {
+  const s = new Str("𤔜䙐福");
+  let n = 0;
+  for (const c of s) {
+    if (n == 0) {
+      t.assertEquals(c, "𤔜");
+    } else if (n == 1) {
+      t.assertEquals(c, "䙐");
+    } else if (n == 2) {
+      t.assertEquals(c, "福");
+    }
+    n++;
+  }
+});

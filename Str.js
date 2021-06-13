@@ -68,5 +68,10 @@ class Str {
     }
     return -1;
   }
+  *[Symbol.iterator]() {
+    for (let i = 0; i < this.length; i++) {
+      yield this[i];
+    }
+  }
 }
 export { Str };
