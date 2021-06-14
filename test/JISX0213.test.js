@@ -24,6 +24,9 @@ Deno.test("validate", () => {
   t.assertEquals(JISX0213.validate("𤔜㙒𡙌𡗟"), [0, 1, 2, 3]);
   t.assertEquals(JISX0213.validate("abc"), []);
 });
+Deno.test("validate", () => {
+  t.assertEquals(JISX0213.validate("abc   ＃"), [6]);
+});
 Deno.test("validate with control code", () => {
   t.assertEquals(JISX0213.validate("abc\ndef"), []);
   t.assertEquals(JISX0213.validate("\t\r\n\b"), []);

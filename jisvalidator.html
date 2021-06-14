@@ -22,7 +22,7 @@ onload = async () => {
     location.hash = s;
 
     const errs = JISX0213.validate(s);
-    console.log(errs);
+    console.log(errs, s);
     divres.innerHTML = "";
     divres.style.textAlign = "left";
     divres.style.display = "inline-block";
