@@ -32,7 +32,7 @@ onload = async () => {
       const c = s[i];
       const span = create("span");
       span.textContent = c;
-      if (errs.find(e => e == i)) {
+      if (errs.indexOf(i) >= 0) {
         span.style.backgroundColor = "red";
         span.style.color = "white";
       }
