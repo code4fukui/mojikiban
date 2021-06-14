@@ -1,6 +1,6 @@
 # mojikiban
 
-[ベースレジストリ](https://github.com/code4fukui/BaseRegistory)の文字で使用する、[文字情報基盤](https://moji.or.jp/mojikiban/)のJavaScriptライブラリ
+[ベースレジストリ](https://github.com/code4fukui/BaseRegistry)の文字で使用する、[文字情報基盤](https://moji.or.jp/mojikiban/)のJavaScriptライブラリ
 
 ## application
 
