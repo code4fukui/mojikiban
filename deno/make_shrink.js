@@ -1,7 +1,7 @@
-import { Moji } from "./Moji.js";
+import { Moji } from "../Moji.js";
 
 export const loadShrinkMap = async () => {
-  const data = JSON.parse(await Deno.readTextFile("data/MJShrinkMap.1.2.0.json"));
+  const data = JSON.parse(await Deno.readTextFile("../data/MJShrinkMap.1.2.0.json"));
   //console.log(data.content.length);
   //console.log(data.content[0]);
   const map = data.content.map(d => {

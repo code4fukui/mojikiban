@@ -1,5 +1,5 @@
 import { CSV } from "https://js.sabae.cc/CSV.js";
-import { Moji } from "./Moji.js";
+import { Moji } from "../Moji.js";
 import { loadShrinkMap } from "./make_shrink.js";
 import { loadShrinkMapUnique } from "./make_shrinkunique.js";
 import { ArrayUtil } from "https://js.sabae.cc/ArrayUtil.js";
@@ -11,7 +11,7 @@ const smapu = await loadShrinkMapUnique();
 console.log(Object.values(smapu).length); // 27584
 
 
-const data = CSV.toJSON(await CSV.fetch("./data/mji.csv"));
+const data = CSV.toJSON(await CSV.fetch("../data/mji.csv"));
 let ndup = 0;
 let nnoucs = 0;
 let njis = 0;
@@ -65,7 +65,7 @@ console.log("no ucs", nnoucs);
 console.log("njis", njis, Object.keys(jismap).length);
 
 //console.log(data2, data2.length);
-await Deno.writeTextFile("./data/moji.csv", CSV.stringify(data2));
+await Deno.writeTextFile("../data/moji.csv", CSV.stringify(data2));
 
 
 console.log(ArrayUtil.max(data2, d => d.lines)); // { mj: 31023, kanji: "𠔻", lines: 64, yomi: "セイ", shrink: undefined }
