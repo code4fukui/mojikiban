@@ -1,6 +1,7 @@
 # mojikiban
 
-- [ベースレジストリ](https://github.com/code4fukui/BaseRegistry)の文字で使用する、[文字情報基盤](https://moji.or.jp/mojikiban/)のJavaScriptライブラリ [MojiKiban.js](MojiKiban.js)
+- [ベースレジストリ](https://github.com/code4fukui/BaseRegistry)の[文字](https://github.com/code4fukui/BaseRegistry/blob/main/%E6%96%87%E5%AD%97%E7%92%B0%E5%A2%83%E5%B0%8E%E5%85%A5%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.md)に関するプロジェクト
+- [文字情報基盤](https://moji.or.jp/mojikiban/)のJavaScriptライブラリ [MojiKiban.js](MojiKiban.js)
 - [文字情報定義ファイル](https://github.com/code4fukui/CharacterInformation)を元にした[JIS X 0213](https://github.com/code4fukui/BaseRegistry/blob/main/%E7%94%A8%E8%AA%9E.md#jis-x-0213)のJavaScriptライブラリ [JISX0213.js](JISX0213.js)
 - 書記素に対応した文字列JavaScriptライブラリ [Str.js](Str.js)
 
