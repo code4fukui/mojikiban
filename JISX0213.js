@@ -6,6 +6,14 @@ const isValid = (s) => {
     s = new Str(s);
   }
   for (const c of s) {
+    if (c.length == 1) {
+      const n = c.codePointAt(0);
+      if (n >= 0 && n <= 0x20 || n >= 0x7f && n <= 0x9f) { // space, delete, c0, c1 are valid (X0213_001.pdf)
+        continue;
+      }
+    } else if (c == "\r\n") { // \r\n as 1 character
+      continue;
+    }
     if (JISX0213_CODE.indexOf(c) < 0) {
       return false;
     }
@@ -19,6 +27,14 @@ const validate = (s) => { // ret errors
   const res = [];
   let n = 0;
   for (const c of s) {
+    if (c.length == 1) {
+      const n = c.codePointAt(0);
+      if (n >= 0 && n <= 0x20 || n >= 0x7f && n <= 0x9f) { // space, delete, c0, c1 are valid (X0213_001.pdf)
+        continue;
+      }
+    } else if (c == "\r\n") { // \r\n as 1 character
+      continue;
+    }
     if (JISX0213_CODE.indexOf(c) < 0) {
       res.push(n); // "char index: " + n + ", '" + c + "' is not in JIS X 0213");
     }
