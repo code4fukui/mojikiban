@@ -1,7 +1,7 @@
 # mojikiban
 
 - [ベースレジストリ](https://github.com/code4fukui/BaseRegistry)の文字で使用する、[文字情報基盤](https://moji.or.jp/mojikiban/)のJavaScriptライブラリ
-- [文字情報定義ファイル](https://github.com/code4fukui/CharacterInformation)を元にしたJIS X 0213のJavaScriptライブラリ
+- [文字情報定義ファイル](https://github.com/code4fukui/CharacterInformation)を元にした[JIS X 0213](https://github.com/code4fukui/BaseRegistry/blob/main/%E7%94%A8%E8%AA%9E.md#jis-x-0213)のJavaScriptライブラリ
 
 ## application
 
