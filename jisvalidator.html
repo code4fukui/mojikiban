@@ -1,0 +1,56 @@
+<meta charset="utf-8"><script type="module">
+import { css, add, h1, style, link, create } from "https://js.sabae.cc/stdom.js";
+import { JISX0213 } from "./JISX0213.js";
+import { Str } from "./Str.js";
+
+onload = async () => {
+  css();
+  style({ body: { "text-align": "center" }, input: { width: "80%", "font-size": "150%", margin: "1em", padding: ".3em" }});
+
+  h1("JIS X 0213 チェッカーβ");
+  const inpkana = add("input");
+  inpkana.placeholder = "チェックしたい文字列";
+  const divres = add("div");
+
+  let slast = "";
+  inpkana.onkeyup = inpkana.onchange = () => {
+    const s = new Str(inpkana.value);
+    if (s.length == 0 || slast == s) {
+      return;
+    }
+    slast = s;
+    location.hash = s;
+
+    const errs = JISX0213.validate(s);
+    console.log(errs);
+    divres.innerHTML = "";
+    divres.style.textAlign = "left";
+    divres.style.display = "inline-block";
+    divres.style.margin = "1em 1em 1em 10vw";
+    divres.style.fontSize = "150%";
+    for (let i = 0; i < s.length; i++) {
+      const c = s[i];
+      const span = create("span");
+      span.textContent = c;
+      if (errs.find(e => e == i)) {
+        span.style.backgroundColor = "red";
+        span.style.color = "white";
+      }
+      divres.appendChild(span);
+    }
+  }
+  add("br");
+  link("漢字検索・異体字検索", "./index.html");
+  link("MJ縮退デモ", "./shrink.html");
+  add("br");
+  link("文字情報＆フォント - 文字情報基盤", "https://moji.or.jp/mojikiban/");
+  link("MojiKiban by Code for Fukui", "https://github.com/code4fukui/mojikiban");
+  link("一日一創", "https://fukuno.jig.jp/3245");
+
+  const key = location.hash.substring(1);
+  if (key) {
+    inpkana.value = decodeURIComponent(key);
+    inpkana.onchange();
+  }
+};
+</script>
