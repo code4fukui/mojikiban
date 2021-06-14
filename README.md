@@ -1,11 +1,13 @@
 # mojikiban
 
-[ベースレジストリ](https://github.com/code4fukui/BaseRegistry)の文字で使用する、[文字情報基盤](https://moji.or.jp/mojikiban/)のJavaScriptライブラリ
+- [ベースレジストリ](https://github.com/code4fukui/BaseRegistry)の文字で使用する、[文字情報基盤](https://moji.or.jp/mojikiban/)のJavaScriptライブラリ
+- [文字情報定義ファイル](https://github.com/code4fukui/CharacterInformation)を元にしたJIS X 0213のJavaScriptライブラリ
 
 ## application
 
 - [漢字検索、異体字検索](https://code4fukui.github.io/mojikiban/)
 - [MJ縮退デモ](https://code4fukui.github.io/mojikiban/shrink.html)
+- [JIS X 0213チェッカーβ](https://code4fukui.github.io/mojikiban/jisvalidator.html)
 
 ## UCS未定義文字
 
