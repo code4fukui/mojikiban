@@ -8,7 +8,7 @@
 
 - [漢字検索、異体字検索](https://code4fukui.github.io/mojikiban/)
 - [MJ縮退デモ](https://code4fukui.github.io/mojikiban/shrink.html)
-- [JIS X 0213チェッカーβ](https://code4fukui.github.io/mojikiban/jisvalidator.html)
+- [JIS X 0213チェッカーβ](https://code4fukui.github.io/mojikiban/jisvalidator.html) （JIS X 0213:2012を反映できていないかもしれないのでβ）
 
 ## UCS未定義文字
 
