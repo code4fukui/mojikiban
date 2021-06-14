@@ -4,7 +4,7 @@ import { MojiKiban } from "./MojiKiban.js";
 
 onload = async () => {
   css();
-  style({ body: { "text-align": "center" }, input: { width: "80%", "font-size": "150%", margin: "1em", padding: ".3em" }});
+  style({ body: { "text-align": "center", "max-width": "85vw" }, input: { width: "80%", "font-size": "150%", margin: "1em", padding: ".3em" }});
 
   h1("漢字検索、異体字検索");
   const inpkana = add("input");
@@ -27,10 +27,14 @@ onload = async () => {
     divres.style.display = "inline-block";
     divres.style.margin = "1em 1em 1em 10vw";
     const max = 100;
+    const tonum = d => d.lines + (d.jis ? 0 : 1000);
+    hits.sort((a, b) => {
+      return tonum(a) - tonum(b);
+    });
     for (let i = 0; i < Math.min(max, hits.length); i++) {
       const d = hits[i];
       const div = create("div");
-      div.innerHTML = `<a href=${MojiKiban.getLink(d)} target=_blank><img src=${MojiKiban.getImageLink(d)} style="height: 2em; margin-bottom: -.5em; margin-right: 1em"></a> ${d.kanji} : ${d.lines}画 : ${d.yomi} : ${d.shrink}`;
+      div.innerHTML = `<a href=${MojiKiban.getLink(d)} target=_blank><img src=${MojiKiban.getImageLink(d)} style="height: 2em; margin-bottom: -.5em; margin-right: 1em"></a> ${d.kanji} : ${d.lines}画 : ${d.yomi} : ${d.shrink} : ${d.jis ? d.jis + "(JIS X 2013)" : ""}`;
       div.style.padding = ".2em 0";
       divres.appendChild(div);
     }

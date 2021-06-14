@@ -10,89 +10,26 @@ console.log(Object.values(smap)); // 31278
 const smapu = await loadShrinkMapUnique();
 console.log(Object.values(smapu).length); // 27584
 
-//Deno.exit(0);
-for (let i = 0; i < smap.length; i++) {
-  //console.log(smap[i], smapu[i]);
-  if (!smap[i] && !smapu[i]) {
-    continue;
-  } else if (!smap[i] && smapu[i]) {
-    console.log("x", smap[i], smapu[i]);
-    throw new Error("x")
-  } else if (smap[i] && !smapu[i]) {
-    //console.log("?", smap[i], smapu[i]);
-  } else if (smap[i][0] != smapu[i]) {
-    const s = smap[i];
-    const m = gsplit.split(s);
-    if (m.length != s.length) {
-      //console.log("long char included", m, s, s.length);
-      //throw new Error("long char included")
-    }
-    const n = m.indexOf(smapu[i]);
-    if (n > 0) {
-      //console.log("************", n)
-    }
-    //console.log("idx", n);
-    const ns = [smapu[i]];
-    for (let i = 0; i < m.length; i++) {
-      if (i != n) {
-        ns.push(m[i]);
-      }
-    }
-    smap[i] = ns.join("");
-    if (smap[i].indexOf("福") >= 0) {
-      console.log(smap[i], smapu[i]);
-    }
-  } else {
-    //console.log(smap[i], smapu[i]);
-  }
-}
-Deno.exit(0);
-/*
-console.log("chk")
-for (let i = 0; i < smap.length; i++) {
-  //console.log(smap[i], smapu[i]);
-  if (!smap[i] && !smapu[i]) {
-    continue;
-  } else if (!smap[i] && smapu[i]) {
-    console.log("x", smap[i], smapu[i]);
-    throw new Error("x")
-  } else if (smap[i] && !smapu[i]) {
-    //console.log("?", smap[i], smapu[i]);
-  } else if (smap[i][0] != smapu[i]) {
-    const s = smap[i];
-    const m = gsplit.split(s);
-    if (m.length != s.length) {
-      console.log("long char included", m, s, s.length);
-      //throw new Error("long char included")
-    }
-    const n = m.indexOf(smapu[i]);
-    if (n > 0) {
-      console.log("************", n)
-    }
-    smapun[i] = n;
-    console.log("idx", n);
-    const ns = [smapu[i]];
-    for (let i = 0; i < m.length; i++) {
-      if (i != n) {
-        ns.push(m[i]);
-      }
-    }
-    smap[i] = ns.join("");
-  } else {
-    smapun[i] = 0;
-    //console.log(smap[i], smapu[i]);
-  }
-}
-*/
-
 
 const data = CSV.toJSON(await CSV.fetch("./data/mji.csv"));
 let ndup = 0;
 let nnoucs = 0;
+let njis = 0;
+const jismap = {};
 const data2 = data.map(d => {
   const mj = parseInt(d.MJ文字図形名.substring(2), 10);
   const ucs = d.実装したMoji_JohoコレクションIVS || d.実装したUCS.substring(2);
   const kanji = d.漢字施策; // 人名用漢字, 常用漢字, "" - 3種類
+  const jis = d.X0213;
+  console.log(jis);
+  if (jis) {
+    njis++;
+    if (jismap[jis]) {
+      jismap[jis]++;
+    } else {
+      jismap[jis] = 1;
+    }
+  }
   if (kanji != "人名用漢字" && kanji != "常用漢字" && kanji != "") {
     //console.log(mj, kanji);
   }
@@ -106,11 +43,11 @@ const data2 = data.map(d => {
     ndup++;
   }
   if (!ucs) {
-    console.log(mj);
+    //console.log(mj);
     nnoucs++;
     return null;
   }
-  console.log(ucs);
+  //console.log(ucs);
   return {
     mj,
     //ucs,
@@ -118,10 +55,14 @@ const data2 = data.map(d => {
     lines: parseInt(d["総画数(参考)"]),
     yomi: d["読み(参考)"],
     shrink: smap[mj],
+    // jisなし、2038940
+    //jis: jis ? "1" : "", // +80kb 2111491
+    jis, // +160kb 2193715
   };
 }).filter(d => d);
 console.log("duplicated", ndup);
 console.log("no ucs", nnoucs);
+console.log("njis", njis, Object.keys(jismap).length);
 
 //console.log(data2, data2.length);
 await Deno.writeTextFile("./data/moji.csv", CSV.stringify(data2));
