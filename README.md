@@ -9,7 +9,13 @@
 
 ```js
 import { JISX0213 } from "https://code4fukui.github.io/mojikiban/JISX0213.js";
-console.log(JISX0213.isValidate("ABC"));
+cosnt s = "ａＡ";
+console.log(JISX0213.isValid(s));
+console.log(JISX0213.validate(s));
+
+const s2 = JISX0213.shrink(s); // "aA"
+console.log(JISX0213.isValid(s2));
+console.log(JISX0213.validate(s2));
 ```
 
 ## application
