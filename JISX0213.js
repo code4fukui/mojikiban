@@ -41,9 +41,31 @@ const validate = (s) => { // ret errors
   }
   return res;
 };
+const shrink = (s) => {
+  if (typeof s != Str) {
+    s = new Str(s);
+  }
+  const s2 = [];
+  for (const c of s) {
+    if (c.length == 1) {
+      const n = c.codePointAt(0);
+      if (n >= 65281 && n <= 65374) { // from ! to ~
+        s2.push(String.fromCodePoint(n - 65345 + 97));
+      } else {
+        // todo shrink hankaku kana
+        s2.push(c);
+      }
+    } else {
+      // todo shrink
+      s2.push(c);
+    }
+  }
+  return s2.join("");
+};
 
 const JISX0213 = {
   isValid,
   validate,
+  shrink,
 };
 export { JISX0213 };
