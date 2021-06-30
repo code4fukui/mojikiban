@@ -5,6 +5,13 @@
 - [文字情報定義ファイル](https://github.com/code4fukui/CharacterInformation)を元にした[JIS X 0213](https://github.com/code4fukui/BaseRegistry/blob/main/%E7%94%A8%E8%AA%9E.md#jis-x-0213)のJavaScriptライブラリ [JISX0213.js](JISX0213.js)
 - 書記素に対応した文字列JavaScriptライブラリ [Str.js](Str.js)
 
+## usage
+
+```js
+import { JISX0213 } from "https://code4fukui.github.io/mojikiban/JISX0213.js";
+console.log(JISX0213.isValidate("ABC"));
+```
+
 ## application
 
 - [漢字検索、異体字検索](https://code4fukui.github.io/mojikiban/)
