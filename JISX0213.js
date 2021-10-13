@@ -1,5 +1,6 @@
 import { Str } from "./Str.js";
 import { JISX0213_CODE } from "./JISX0213_CODE.js";
+import { HankakuKana } from "./HankakuKana.js";
 
 const isValid = (s) => {
   if (typeof s != Str) {
@@ -51,8 +52,17 @@ const shrink = (s) => {
       const n = c.codePointAt(0);
       if (n >= 65281 && n <= 65374) { // from ! to ~
         s2.push(String.fromCodePoint(n - 65345 + 97));
+      } else if (HankakuKana.isHan(c)) {
+        s2.push(HankakuKana.toZen(c));
       } else {
-        // todo shrink hankaku kana
+        // todo shrink other not jis x 0213
+        s2.push(c);
+      }
+    } else if (c.length == 2) {
+      if (HankakuKana.isHan(c)) {
+        s2.push(HankakuKana.toZen(c));
+      } else {
+        // todo shrink
         s2.push(c);
       }
     } else {

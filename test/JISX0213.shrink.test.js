@@ -16,6 +16,11 @@ Deno.test("not shrink", () => {
   t.assertEquals(JISX0213.shrink("　"), "　");
   t.assertEquals(JISX0213.isValid("　"), true); // 全角空白はvalid
 });
+Deno.test("shrink kana", () => {
+  t.assertEquals(JISX0213.shrink("ａｶﾞｷﾞｱｲｳｴｵ"), "aガギアイウエオ");
+  t.assertEquals(JISX0213.shrink("ｰ"), "ー");
+  t.assertEquals(JISX0213.shrink("｡､｢｣"), "。、「」");
+});
 
 /*
 // check hankaku
