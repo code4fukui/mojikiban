@@ -8,7 +8,7 @@ Deno.test("toZen", () => {
 Deno.test("toHan", () => {
   t.assertEquals(HankakuKana.toHan("ガギアイウエオ"), "ｶﾞｷﾞｱｲｳｴｵ");
 });
-Deno.test("isHalf", () => {
+Deno.test("isHan", () => {
   t.assert(HankakuKana.isHan("ｱ"));
   t.assert(!HankakuKana.isHan("ア"));
 });
