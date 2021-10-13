@@ -1,5 +1,5 @@
-import { loadShrinkMap } from "../make_shrink.js";
-import { loadShrinkMapUnique } from "../make_shrinkunique.js";
+import { loadShrinkMap } from "../deno/make_shrink.js";
+import { loadShrinkMapUnique } from "../deno/make_shrinkunique.js";
 import gsplit from 'https://taisukef.github.io/GraphemeSplitter/GraphemeSplitterJS/StringSplitter.Grapheme.mjs'
 
 Deno.test("shrink", async () => {
