@@ -1,12 +1,12 @@
 import * as t from "https://deno.land/std/testing/asserts.ts";
 import { ZenkakuAlpha } from "../ZenkakuAlpha.js";
 
-const zenall = "！＂＃＄％＆＇（）＊＋，－．／０１２３４５６７８９：；＜＝＞？＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［＼］＾＿｀ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ｛｜｝～";
-const hanall = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+const zenall = "　！＂＃＄％＆＇（）＊＋，－．／０１２３４５６７８９：；＜＝＞？＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［＼］＾＿｀ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ｛｜｝～";
+const hanall = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
 /*
 // make zenall
-const res = [];
+const res = ["　"];
 for (let i = 65281; i <= 65374; i++) {
   res.push(String.fromCodePoint(i));
 }
@@ -15,7 +15,7 @@ console.log(res.join(""), res.length);
 
 /*
 // make hanall
-const res2 = [];
+const res2 = [" ""];
 for (let i = 33; i <= 126; i++) {
   res2.push(String.fromCodePoint(i));
 }
@@ -39,6 +39,6 @@ Deno.test("isZen", () => {
   t.assert(!ZenkakuAlpha.isZen("z"));
 });
 Deno.test("space", () => {
-  t.assertEquals(ZenkakuAlpha.toZen(" "), " "); // han spc -> han spc (not convert)
-  t.assertEquals(ZenkakuAlpha.toHan("　"), "　"); // zen spc -> zen spc (not convert)
+  t.assertEquals(ZenkakuAlpha.toZen(" "), "　"); // han spc -> zen spc
+  t.assertEquals(ZenkakuAlpha.toHan("　"), " "); // zen spc -> han spc
 });
