@@ -37,6 +37,13 @@ Deno.test("toHan", () => {
 Deno.test("isZen", () => {
   t.assert(ZenkakuAlpha.isZen("ｚ"));
   t.assert(!ZenkakuAlpha.isZen("z"));
+  t.assert(ZenkakuAlpha.isZen("　"));
+});
+Deno.test("isHan", () => {
+  t.assert(!ZenkakuAlpha.isHan("ｚ"));
+  t.assert(ZenkakuAlpha.isHan("z"));
+  t.assert(ZenkakuAlpha.isHan(" "));
+  t.assert(!ZenkakuAlpha.isHan("　"));
 });
 Deno.test("space", () => {
   t.assertEquals(ZenkakuAlpha.toZen(" "), "　"); // han spc -> zen spc

@@ -11,7 +11,7 @@ class ZenkakuAlpha {
       return false;
     }
     const n = c.codePointAt();
-    return n >= 33 && n <= 126;
+    return n >= 32 && n <= 126; // include han space
   }
   static _convert(s, from, to) {
     if (s == null) {
