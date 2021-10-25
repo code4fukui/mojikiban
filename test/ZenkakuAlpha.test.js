@@ -49,3 +49,19 @@ Deno.test("space", () => {
   t.assertEquals(ZenkakuAlpha.toZen(" "), "　"); // han spc -> zen spc
   t.assertEquals(ZenkakuAlpha.toHan("　"), " "); // zen spc -> han spc
 });
+Deno.test("lengthHan", () => {
+  t.assertEquals(ZenkakuAlpha.lengthHan("あ"), 2);
+  t.assertEquals(ZenkakuAlpha.lengthHan("a"), 1);
+  t.assertEquals(ZenkakuAlpha.lengthHan("あa"), 3);
+  t.assertEquals(ZenkakuAlpha.lengthHan(""), 0);
+  t.assertEquals(ZenkakuAlpha.lengthHan("福井太郎!"), 9);
+});
+Deno.test("substringHan", () => {
+  t.assertEquals(ZenkakuAlpha.substringHan("福井太郎!", 0, 2), "福");
+  t.assertEquals(ZenkakuAlpha.substringHan("福井太郎!", 0, 3), "福井");
+  t.assertEquals(ZenkakuAlpha.substringHan("福II太郎!", 0, 3), "福I");
+  t.assertEquals(ZenkakuAlpha.substringHan("福井太郎!", 0, 4), "福井");
+  t.assertEquals(ZenkakuAlpha.substringHan("福井太郎!", 1, 3), "井");
+  t.assertEquals(ZenkakuAlpha.substringHan("福井太郎!", 1, 2), "");
+  t.assertEquals(ZenkakuAlpha.substringHan("FK井太郎!", 1, 3), "K井");
+});

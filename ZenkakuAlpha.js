@@ -13,6 +13,33 @@ class ZenkakuAlpha {
     const n = c.codePointAt();
     return n >= 32 && n <= 126; // include han space
   }
+  static lengthHan = (s) => {
+    let n = 0;
+    for (const c of s) {
+      if (ZenkakuAlpha.isHan(c)) {
+        n++;
+      } else {
+        n += 2;
+      }
+    }
+    return n;
+  }
+  static substringHan(s, start, end) {
+    const res = [];
+    let n = 0;
+    for (let i = 0; i < s.length; i++) {
+      const c = s[i];
+      const len = ZenkakuAlpha.isHan(c) ? 1 : 2;
+      if (n >= start) {
+        res.push(c);
+      }
+      n += len;
+      if (n >= end) {
+        break;
+      }
+    }
+    return res.join("");
+  };
   static _convert(s, from, to) {
     if (s == null) {
       return s;
