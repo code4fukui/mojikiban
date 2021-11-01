@@ -19,5 +19,5 @@ export const indexOfIgnoreZenHan = (s1, s2) => {
   }
   s1 = normalizeZenHan(s1);
   s2 = normalizeZenHan(s2);
-  return s1.indexOf(s2) >= 0;
+  return s1.indexOf(s2);
 };
