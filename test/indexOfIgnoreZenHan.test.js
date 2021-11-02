@@ -21,10 +21,12 @@ Deno.test("test3", () => {
   t.assertEquals("".indexOf("45"), -1);
   t.assertEquals(indexOfIgnoreZenHan("", "45"), -1);
   t.assertEquals(indexOfIgnoreZenHan("", "45"), -1);
+  t.assertEquals(indexOfIgnoreZenHan("", ""), 0);
 });
 Deno.test("null", () => {
+  t.assertEquals(indexOfIgnoreZenHan(null, ""), 0);
   t.assertEquals(indexOfIgnoreZenHan(null, "45"), -1);
-  t.assertEquals(indexOfIgnoreZenHan("", null), -1);
+  t.assertEquals(indexOfIgnoreZenHan("", null), 0);
   t.assertEquals(indexOfIgnoreZenHan(null, null), 0);
 });
 Deno.test("num", () => {
