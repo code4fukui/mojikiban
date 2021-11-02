@@ -22,6 +22,8 @@ Deno.test("test3", () => {
   t.assertEquals(indexOfIgnoreZenHan("", "45"), -1);
   t.assertEquals(indexOfIgnoreZenHan("", "45"), -1);
   t.assertEquals(indexOfIgnoreZenHan("", ""), 0);
+  t.assertEquals(indexOfIgnoreZenHan("abc", ""), 0);
+  t.assertEquals(indexOfIgnoreZenHan("abc", null), 0);
 });
 Deno.test("null", () => {
   t.assertEquals(indexOfIgnoreZenHan(null, ""), 0);
