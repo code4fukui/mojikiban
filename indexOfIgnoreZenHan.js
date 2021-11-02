@@ -6,10 +6,10 @@ const normalizeZenHan = (s) => {
 };
 export const indexOfIgnoreZenHan = (s1, s2) => {
   if (s1 == s2) {
-    return true;
+    return 0;
   }
   if (!s1 || !s2) {
-    return false;
+    return -1;
   }
   if (typeof s1 != "string") {
     s1 = s1.toString();
