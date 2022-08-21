@@ -65,3 +65,12 @@ Deno.test("substringHan", () => {
   t.assertEquals(ZenkakuAlpha.substringHan("福井太郎!", 1, 2), "");
   t.assertEquals(ZenkakuAlpha.substringHan("FK井太郎!", 1, 3), "K井");
 });
+Deno.test("isZen (mac special chars　`”“‘’`)", () => {
+  t.assert(ZenkakuAlpha.isZen("”"));
+  t.assert(ZenkakuAlpha.isZen("“"));
+  t.assert(ZenkakuAlpha.isZen("‘"));
+  t.assert(ZenkakuAlpha.isZen("’"));
+  t.assertEquals(ZenkakuAlpha.toHan("”“‘’"), `""''`);
+  t.assertEquals(ZenkakuAlpha.toZen(`""''`), "＂＂＇＇");
+  t.assertEquals(ZenkakuAlpha.toHan("＂＂＇＇"), `""''`);
+});

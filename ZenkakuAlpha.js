@@ -3,6 +3,9 @@ class ZenkakuAlpha {
     if (c == null || c == "") {
       return false;
     }
+    if (`”“‘’`.indexOf(c) >= 0) {
+      return true;
+    }
     const n = c.codePointAt();
     return n >= 65281 && n <= 65374 || n == 12288; // include zen space
   }
@@ -61,13 +64,19 @@ class ZenkakuAlpha {
     }
     const res = [];
     for (const c of s) {
-      const n = c.codePointAt(0);
-      if (n >= 65281 && n <= 65374) {
-        res.push(String.fromCodePoint(n - 65248));
-      } else if (n == 12288) {
-        res.push(" ");
+      if (`”“`.indexOf(c) >= 0) {
+        res.push(`"`);
+      } else if (`‘’`.indexOf(c) >= 0) {
+        res.push(`'`);
       } else {
-        res.push(c);
+        const n = c.codePointAt(0);
+        if (n >= 65281 && n <= 65374) {
+          res.push(String.fromCodePoint(n - 65248));
+        } else if (n == 12288) {
+          res.push(" ");
+        } else {
+          res.push(c);
+        }
       }
     }
     return res.join("");
