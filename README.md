@@ -9,6 +9,8 @@
 
 ## usage
 
+### JISX0213
+
 ```js
 import { JISX0213 } from "https://code4fukui.github.io/mojikiban/JISX0213.js";
 cosnt s = "ａＡ";
@@ -18,6 +20,15 @@ console.log(JISX0213.validate(s));
 const s2 = JISX0213.shrink(s); // "aA"
 console.log(JISX0213.isValid(s2));
 console.log(JISX0213.validate(s2));
+```
+
+### Kana
+
+```js
+import * as Kana from "https://code4fukui.github.io/mojikiban/Kana.js";
+
+console.log(Kana.hira2kata("あいう"));
+console.log(Kana.kata2hira("アイウ"));
 ```
 
 ## application
