@@ -98,6 +98,14 @@ class ZenkakuAlpha {
     }
     return res.join("");
   }
+  static toZens(s) {
+    if (s == null) {
+      return [];
+    }
+    if (s == '"') return ['＂', '＂', '”', '“'];
+    if (s == "'") return ['＇', '＇', "'", "'"];
+    return [ZenkakuAlpha.toZen(s)];
+  }
 }
 
 export { ZenkakuAlpha };

@@ -74,3 +74,7 @@ Deno.test("isZen (mac special chars　`”“‘’`)", () => {
   t.assertEquals(ZenkakuAlpha.toZen(`""''`), "＂＂＇＇");
   t.assertEquals(ZenkakuAlpha.toHan("＂＂＇＇"), `""''`);
 });
+Deno.test("toZens", () => {
+  t.assert(ZenkakuAlpha.toZens('"'), ['＂', '＂', '”', '“']);
+  t.assert(ZenkakuAlpha.toZens("'"), ['＇', '＇', "'", "'"]);
+});
