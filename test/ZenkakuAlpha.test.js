@@ -75,6 +75,13 @@ Deno.test("isZen (mac special chars　`”“‘’`)", () => {
   t.assertEquals(ZenkakuAlpha.toHan("＂＂＇＇"), `""''`);
 });
 Deno.test("toZens", () => {
-  t.assert(ZenkakuAlpha.toZens('"'), ['＂', '＂', '”', '“']);
-  t.assert(ZenkakuAlpha.toZens("'"), ['＇', '＇', "'", "'"]);
+  t.assertEquals(ZenkakuAlpha.toZens('"'), ['＂', '＂', '”', '“']);
+  t.assertEquals(ZenkakuAlpha.toZens("'"), ['＇', '＇', "'", "'"]);
+});
+Deno.test("toHalf another hyphen", () => {
+  t.assertEquals(ZenkakuAlpha.toHan('-'), "-"); // normal
+  t.assertEquals('-'.charCodeAt(0), 45); // normal hyphen
+  t.assertEquals('‐'.charCodeAt(0), 0x2010); // U+2010 hyphen
+  t.assertEquals(ZenkakuAlpha.toHan('‐'), "-"); // to normal hyphen
+  t.assertEquals(ZenkakuAlpha.toHan('‐').charCodeAt(0), 45); // to normal hyphen
 });

@@ -68,6 +68,8 @@ class ZenkakuAlpha {
         res.push(`"`);
       } else if (`‘’`.indexOf(c) >= 0) {
         res.push(`'`);
+      } else if (c == "‐") {
+        res.push("-")
       } else {
         const n = c.codePointAt(0);
         if (n >= 65281 && n <= 65374) {
