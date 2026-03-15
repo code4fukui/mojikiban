@@ -1,5 +1,7 @@
 # mojikiban
 
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
 A project related to the [BaseRegistry](https://github.com/code4fukui/BaseRegistry)'s [characters](https://github.com/code4fukui/BaseRegistry/blob/main/%E6%96%87%E5%AD%97%E7%92%B0%E5%A2%83%E5%B0%8E%E5%85%A5%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.md).
 
 ## Features
