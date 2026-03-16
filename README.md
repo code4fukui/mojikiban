@@ -65,3 +65,6 @@ MJ053025 and MJ053026 have the same glyph and meaning in the Koseki Toitsu Moji.
 MJ055352 and MJ055353 have the same glyph and meaning in the Koseki Toitsu Moji.
 MJ059043 was the same glyph as MJ059042 and did not correspond to Koseki Toitsu Moji No. 499580. Therefore, a new MJ character glyph name MJ068101 corresponding to Koseki Toitsu Moji No. 499580 was added in Ver.005.02.
 ```
+
+## License
+MIT License — see [LICENSE](LICENSE).
